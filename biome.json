@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "files": {
+    "include": ["src/**/*.ts"]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      }
+    }
+  },
+  "organizeImports": {
+    "enabled": true
+  }
+}
