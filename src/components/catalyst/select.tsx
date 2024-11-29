@@ -23,7 +23,7 @@ export const Select = forwardRef(function Select(
         // Background color is moved to control and shadow is removed in dark mode so hide `before` pseudo
         "dark:before:hidden",
         // Focus ring
-        "after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-transparent after:has-[[data-focus]]:ring-2 after:has-[[data-focus]]:ring-blue-500",
+        "after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset after:has-[[data-focus]]:ring-2 after:has-[[data-focus]]:ring-blue-500",
         // Disabled state
         "has-[[data-disabled]]:opacity-50 before:has-[[data-disabled]]:bg-zinc-950/5 before:has-[[data-disabled]]:shadow-none",
       ])}
@@ -38,7 +38,7 @@ export const Select = forwardRef(function Select(
           // Horizontal padding
           multiple
             ? "px-[calc(theme(spacing[3.5])-1px)] sm:px-[calc(theme(spacing.3)-1px)]"
-            : "pl-[calc(theme(spacing[3.5])-1px)] pr-[calc(theme(spacing.10)-1px)] sm:pl-[calc(theme(spacing.3)-1px)] sm:pr-[calc(theme(spacing.9)-1px)]",
+            : "pr-[calc(theme(spacing.10)-1px)] pl-[calc(theme(spacing[3.5])-1px)] sm:pr-[calc(theme(spacing.9)-1px)] sm:pl-[calc(theme(spacing.3)-1px)]",
           // Options (multi-select)
           "[&_optgroup]:font-semibold",
           // Typography
@@ -50,7 +50,7 @@ export const Select = forwardRef(function Select(
           // Hide default focus styles
           "focus:outline-none",
           // Invalid state
-          "data-[invalid]:border-red-500 data-[invalid]:data-[hover]:border-red-500 data-[invalid]:dark:border-red-600 data-[invalid]:data-[hover]:dark:border-red-600",
+          "data-[invalid]:data-[hover]:border-red-500 data-[invalid]:border-red-500 data-[invalid]:data-[hover]:dark:border-red-600 data-[invalid]:dark:border-red-600",
           // Disabled state
           "data-[disabled]:border-zinc-950/20 data-[disabled]:opacity-100 dark:data-[hover]:data-[disabled]:border-white/15 data-[disabled]:dark:border-white/15 data-[disabled]:dark:bg-white/[2.5%]",
         ])}

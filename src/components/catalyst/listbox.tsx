@@ -35,7 +35,7 @@ export function Listbox<T>({
           // Hide default focus styles
           "focus:outline-none",
           // Focus ring
-          "after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-transparent after:data-[focus]:ring-2 after:data-[focus]:ring-blue-500",
+          "after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset after:data-[focus]:ring-2 after:data-[focus]:ring-blue-500",
           // Disabled state
           "data-[disabled]:opacity-50 before:data-[disabled]:bg-zinc-950/5 before:data-[disabled]:shadow-none",
         ])}
@@ -56,7 +56,7 @@ export function Listbox<T>({
             // Set minimum height for when no value is selected
             "min-h-11 sm:min-h-9",
             // Horizontal padding
-            "pl-[calc(theme(spacing[3.5])-1px)] pr-[calc(theme(spacing.7)-1px)] sm:pl-[calc(theme(spacing.3)-1px)]",
+            "pr-[calc(theme(spacing.7)-1px)] pl-[calc(theme(spacing[3.5])-1px)] sm:pl-[calc(theme(spacing.3)-1px)]",
             // Typography
             "text-left text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]",
             // Border
@@ -64,7 +64,7 @@ export function Listbox<T>({
             // Background color
             "bg-transparent dark:bg-white/5",
             // Invalid state
-            "group-data-[invalid]:border-red-500 group-data-[invalid]:group-data-[hover]:border-red-500 group-data-[invalid]:dark:border-red-600 group-data-[invalid]:data-[hover]:dark:border-red-600",
+            "group-data-[invalid]:group-data-[hover]:border-red-500 group-data-[invalid]:border-red-500 group-data-[invalid]:dark:border-red-600 group-data-[invalid]:data-[hover]:dark:border-red-600",
             // Disabled state
             "group-data-[disabled]:border-zinc-950/20 group-data-[disabled]:opacity-100 group-data-[disabled]:dark:border-white/15 group-data-[disabled]:dark:bg-white/[2.5%] dark:data-[hover]:group-data-[disabled]:border-white/15",
           ])}
@@ -106,9 +106,9 @@ export function Listbox<T>({
           // Popover background
           "bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75",
           // Shadows
-          "shadow-lg ring-1 ring-zinc-950/10 dark:ring-inset dark:ring-white/10",
+          "shadow-lg ring-1 ring-zinc-950/10 dark:ring-white/10 dark:ring-inset",
           // Transitions
-          "transition-opacity duration-100 ease-in data-[transition]:pointer-events-none data-[closed]:data-[leave]:opacity-0",
+          "transition-opacity duration-100 ease-in data-[closed]:data-[leave]:opacity-0 data-[transition]:pointer-events-none",
         )}
       >
         {options}
@@ -149,7 +149,7 @@ export function ListboxOption<T>({
           <div
             className={clsx(
               // Basic layout
-              "group/option grid cursor-default grid-cols-[theme(spacing.5),1fr] items-baseline gap-x-2 rounded-lg py-2.5 pl-2 pr-3.5 sm:grid-cols-[theme(spacing.4),1fr] sm:py-1.5 sm:pl-1.5 sm:pr-3",
+              "group/option grid cursor-default grid-cols-[theme(spacing.5),1fr] items-baseline gap-x-2 rounded-lg py-2.5 pr-3.5 pl-2 sm:grid-cols-[theme(spacing.4),1fr] sm:py-1.5 sm:pr-3 sm:pl-1.5",
               // Typography
               "text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]",
               // Focus
