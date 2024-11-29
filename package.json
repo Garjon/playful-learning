@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "next": "15.0.3",
+    "pino": "^9.5.0",
+    "pino-pretty": "^13.0.0",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
