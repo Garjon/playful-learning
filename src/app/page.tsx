@@ -1,11 +1,16 @@
 import { Heading } from "@/components/catalyst/heading";
 import { Text } from "@/components/catalyst/text";
+import { NewGameForm } from "@/components/new-game-form";
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <Heading level={1}>Game time</Heading>
-      <Text>Generate fun learning activities for children.</Text>
+    <div className="flex flex-col gap-4">
+      <div>
+        <Heading level={1}>Game time</Heading>
+        <Text>Let's create a fun learning activity for your child!</Text>
+      </div>
+
+      <NewGameForm />
     </div>
   );
 }

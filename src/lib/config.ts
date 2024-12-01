@@ -2,6 +2,7 @@ import { z } from "zod";
 import { logger } from "./logger";
 
 const configSchema = z.object({
+  OPENAI_API_KEY: z.string().min(1, "OPENAI_API_KEY is required"),
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
