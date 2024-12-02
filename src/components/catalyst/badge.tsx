@@ -47,7 +47,7 @@ export function Badge({
       {...props}
       className={clsx(
         className,
-        "inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 font-medium text-sm/5 sm:text-xs/5 forced-colors:outline",
+        "inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 font-medium text-base sm:text-sm forced-colors:outline",
         colors[color],
       )}
     />

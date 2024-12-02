@@ -63,7 +63,7 @@ export function DialogTitle({
       {...props}
       className={clsx(
         className,
-        "text-balance font-semibold text-lg/6 text-zinc-950 sm:text-base/6 dark:text-white",
+        "text-balance font-semibold text-lg/6 text-zinc-950 sm:text-lg dark:text-white",
       )}
     />
   );

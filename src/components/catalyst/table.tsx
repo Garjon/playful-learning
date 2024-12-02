@@ -53,7 +53,7 @@ export function Table({
               !bleed && "sm:px-[--gutter]",
             )}
           >
-            <table className="min-w-full text-left text-sm/6 text-zinc-950 dark:text-white">
+            <table className="min-w-full text-left text-base text-zinc-950 dark:text-white">
               {children}
             </table>
           </div>

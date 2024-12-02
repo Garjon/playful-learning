@@ -62,7 +62,7 @@ export function DropdownItem({
     // Base styles
     "group cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5",
     // Text styles
-    "text-left text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]",
+    "text-left text-lg text-zinc-950 sm:text-base dark:text-white forced-colors:text-[CanvasText]",
     // Focus
     "data-[focus]:bg-blue-500 data-[focus]:text-white",
     // Disabled state
@@ -133,7 +133,7 @@ export function DropdownHeading({
       {...props}
       className={clsx(
         className,
-        "col-span-full grid grid-cols-[1fr,auto] gap-x-12 px-3.5 pt-2 pb-1 font-medium text-sm/5 text-zinc-500 sm:px-3 sm:text-xs/5 dark:text-zinc-400",
+        "col-span-full grid grid-cols-[1fr,auto] gap-x-12 px-3.5 pt-2 pb-1 font-medium text-base text-zinc-500 sm:px-3 sm:text-sm dark:text-zinc-400",
       )}
     />
   );
@@ -184,7 +184,7 @@ export function DropdownDescription({
       {...props}
       className={clsx(
         className,
-        "col-span-2 col-start-2 row-start-2 text-sm/5 text-zinc-500 group-data-[focus]:text-white sm:text-xs/5 dark:text-zinc-400 forced-colors:group-data-[focus]:text-[HighlightText]",
+        "col-span-2 col-start-2 row-start-2 text-base text-zinc-500 group-data-[focus]:text-white sm:text-sm dark:text-zinc-400 forced-colors:group-data-[focus]:text-[HighlightText]",
       )}
     />
   );
