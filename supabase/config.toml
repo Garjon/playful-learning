@@ -1,0 +1,42 @@
+project_id = "playful-learning"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "playful_learning"]
+extra_search_path = ["public", "playful_learning"]
+max_rows = 1000
+
+[api.tls]
+enabled = false
+
+[db]
+port = 54322
+major_version = 15
+
+[auth]
+enabled = true
+additional_redirect_urls = ["https://localhost:3000", "http://localhost:3000/auth/callback", "http://localhost:54321/auth/v1/callback"]
+
+[auth.external.google]
+enabled = true
+client_id = "env(GOOGLE_CLIENT_ID)"
+secret = "env(GOOGLE_CLIENT_SECRET)"
+
+[db.seed]
+enabled = true
+sql_paths = ['./seed.sql']
+
+[studio]
+enabled = true
+port = 54323
+api_url = "http://127.0.0.1"
+
+[analytics]
+enabled = false
+
+[realtime]
+enabled = false
+
+[storage]
+enabled = false

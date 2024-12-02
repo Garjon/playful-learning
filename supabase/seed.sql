@@ -1,0 +1,1 @@
+-- Should we need any seed data for local development, we can add it here.
