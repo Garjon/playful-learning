@@ -1,6 +1,3 @@
-import { StackedLayout } from "@/components/catalyst/stacked-layout";
-import { type NavItem, Navbar } from "@/components/navbar";
-import { Sidebar } from "@/components/sidebar";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter, Lexend } from "next/font/google";
@@ -23,9 +20,7 @@ export const metadata: Metadata = {
   description: "Generate fun learning activities for children",
 };
 
-const navItems: NavItem[] = [{ label: "Home", url: "/" }];
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -39,14 +34,7 @@ export default function RootLayout({
         lexend.variable,
       )}
     >
-      <body className="flex h-full flex-col justify-between">
-        <StackedLayout
-          navbar={<Navbar navItems={navItems} />}
-          sidebar={<Sidebar navItems={navItems} />}
-        >
-          {children}
-        </StackedLayout>
-      </body>
+      <body className="flex h-full flex-col justify-between">{children}</body>
     </html>
   );
 }

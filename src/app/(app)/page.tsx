@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex flex-col gap-4">
       <div>
         <Heading level={1}>Game time</Heading>
-        <Text>Let's create a fun learning activity for your child!</Text>
+        <Text>Letʼs create a fun learning activity for your child!</Text>
       </div>
 
       <NewGameForm />
