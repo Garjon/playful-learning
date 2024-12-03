@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import { config } from "@/lib/config";
+import { env } from "@/env";
 import { createServerClient } from "@supabase/ssr";
 
 export async function updateSession(request: NextRequest) {
@@ -9,8 +9,8 @@ export async function updateSession(request: NextRequest) {
   });
 
   const supabase = createServerClient(
-    config.NEXT_PUBLIC_SUPABASE_URL,
-    config.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies: {
         getAll() {

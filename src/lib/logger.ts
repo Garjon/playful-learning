@@ -1,5 +1,5 @@
+import { env } from "@/env";
 import pino from "pino";
-import { config } from "./config";
 
 const developmentTransport = {
   target: "pino-pretty",
@@ -11,7 +11,6 @@ const developmentTransport = {
 };
 
 export const logger = pino({
-  level: config?.LOG_LEVEL || "info",
-  transport:
-    config?.NODE_ENV === "development" ? developmentTransport : undefined,
+  level: env.LOG_LEVEL || "info",
+  transport: env.NODE_ENV === "development" ? developmentTransport : undefined,
 });

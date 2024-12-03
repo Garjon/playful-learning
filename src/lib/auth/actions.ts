@@ -3,10 +3,10 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { env } from "@/env";
+import { logger } from "@/lib/logger";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { SignInWithOAuthCredentials } from "@supabase/supabase-js";
-
-import { config } from "@/lib/config";
 
 export async function signInWithGoogle() {
   const supabase = await createSupabaseServerClient();
@@ -14,7 +14,7 @@ export async function signInWithGoogle() {
   const params: SignInWithOAuthCredentials = {
     provider: "google",
     options: {
-      redirectTo: `${config.NEXT_PUBLIC_BASE_URL}/auth/callback`,
+      redirectTo: `${env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
     },
   };
 
@@ -26,7 +26,7 @@ export async function signInWithGoogle() {
   }
 
   if (error) {
-    console.error(error);
+    logger.error(error);
     return redirect("/login");
   }
 }

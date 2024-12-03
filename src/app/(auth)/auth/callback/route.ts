@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 
-import { config } from "@/lib/config";
+import { env } from "@/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function GET(request: Request) {
@@ -18,7 +18,7 @@ export async function GET(request: Request) {
 
     if (!error && !!data.user) {
       const forwardedHost = request.headers.get("x-forwarded-host");
-      const isLocalEnv = config.NODE_ENV === "development";
+      const isLocalEnv = env.NODE_ENV === "development";
 
       if (isLocalEnv) {
         // When we're local dev'ing, we can be sure that there is no load balancer in play,

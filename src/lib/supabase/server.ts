@@ -1,14 +1,14 @@
 import { cookies } from "next/headers";
 
-import { config } from "@/lib/config";
+import { env } from "@/env";
 import { createServerClient } from "@supabase/ssr";
 
 export async function createSupabaseServerClient() {
   const cookieStore = await cookies();
 
   return createServerClient(
-    config.NEXT_PUBLIC_SUPABASE_URL,
-    config.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies: {
         getAll() {
@@ -34,8 +34,8 @@ export async function createSupabaseAdminServerClient() {
   const cookieStore = await cookies();
 
   return createServerClient(
-    config.NEXT_PUBLIC_SUPABASE_URL,
-    config.SUPABASE_SERVICE_ROLE_KEY,
+    env.NEXT_PUBLIC_SUPABASE_URL,
+    env.SUPABASE_SERVICE_ROLE_KEY,
     {
       cookies: {
         getAll() {
