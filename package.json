@@ -11,7 +11,8 @@
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
     "supabase:db:migrate": "supabase db migrate",
-    "supabase:db:reset": "supabase db reset"
+    "supabase:db:reset": "supabase db reset",
+    "supabase:db:types": "supabase gen types typescript --local --schema playful_learning > ./src/lib/db/database-generated.types.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",

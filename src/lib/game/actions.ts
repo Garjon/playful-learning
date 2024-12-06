@@ -1,7 +1,9 @@
 "use server";
 
+import { generateGameWithAI } from "@/lib/ai/generate-game";
+import { insertGame } from "@/lib/db/games";
+import { redirect } from "next/navigation";
 import { z } from "zod";
-import { type Game, generateGameWithAI } from "../ai/generate-game";
 
 const NewGameFormSchema = z.object({
   activity_type: z.enum(["reading", "writing", "maths"], {
@@ -39,7 +41,6 @@ export type NewGameFormState = {
     number_of_kids?: string;
     number_of_adults?: string;
   };
-  game?: Game | null;
 };
 
 export async function createGame(
@@ -74,5 +75,7 @@ export async function createGame(
     numberOfAdults: number_of_adults,
   });
 
-  return { game };
+  const savedGameId = await insertGame(game);
+
+  return redirect(`/games/${savedGameId}`);
 }

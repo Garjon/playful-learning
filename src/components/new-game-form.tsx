@@ -2,9 +2,7 @@
 
 import { Button } from "@/components/catalyst/button";
 import { ErrorMessage, Field, Label } from "@/components/catalyst/fieldset";
-import { Heading, Subheading } from "@/components/catalyst/heading";
 import { Select } from "@/components/catalyst/select";
-import { Text } from "@/components/catalyst/text";
 import { type NewGameFormState, createGame } from "@/lib/game/actions";
 import { useActionState, useEffect, useState } from "react";
 
@@ -23,7 +21,7 @@ export function NewGameForm() {
   }
 
   useEffect(() => {
-    if (!!state?.message || !!state.errors || !!state.game) {
+    if (!!state?.message || !!state.errors) {
       setIsSaving(false);
     }
   }, [state]);
@@ -102,37 +100,6 @@ export function NewGameForm() {
       </form>
 
       {state.message && <div>{state.message}</div>}
-
-      {state.game && (
-        <div className="flex flex-col gap-4 rounded-xl border-4 border-purple-200 bg-gray-50 bg-purple-100 p-4 md:p-8">
-          <Heading level={2}>{state.game.title}</Heading>
-          <Text>{state.game.description}</Text>
-
-          <Subheading level={3}>Instructions</Subheading>
-
-          <ol className="flex list-decimal flex-col gap-4 pl-8">
-            {state.game.instructions.map((instruction) => {
-              return (
-                <li className="space-y-2" key={instruction}>
-                  <Text>{instruction}</Text>
-                </li>
-              );
-            })}
-          </ol>
-
-          <Subheading level={3}>Tips</Subheading>
-
-          <ul className="flex list-disc flex-col gap-2 pl-8 text-sm">
-            {state.game.tips.map((tip) => {
-              return (
-                <li key={tip}>
-                  <Text>{tip}</Text>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
     </div>
   );
 }

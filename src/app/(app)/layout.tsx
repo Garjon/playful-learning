@@ -4,7 +4,7 @@ import { Sidebar } from "@/components/sidebar";
 import { getUserProfile } from "@/lib/auth/user";
 import { redirect } from "next/navigation";
 
-const navItems: NavItem[] = [{ label: "Home", url: "/" }];
+const navItems: NavItem[] = [{ label: "Games", url: "/" }];
 
 export default async function AppLayout({
   children,

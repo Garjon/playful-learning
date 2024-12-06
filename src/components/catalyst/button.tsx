@@ -51,7 +51,7 @@ const styles = {
   ],
   plain: [
     // Base
-    "border-transparent text-zinc-950 data-[active]:bg-zinc-950/5 data-[hover]:bg-zinc-950/5",
+    "border-transparent text-zinc-950 data-[active]:bg-zinc-950/5 data-[hover]:bg-yellow-100",
     // Dark mode
     "dark:text-white dark:data-[active]:bg-white/10 dark:data-[hover]:bg-white/10",
     // Icon

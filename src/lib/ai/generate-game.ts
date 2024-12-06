@@ -1,3 +1,4 @@
+import type { NewGame } from "@/lib/game/types";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { ChatOpenAI } from "@langchain/openai";
@@ -38,19 +39,19 @@ const gameSchema = z.object({
   tips: z.array(z.string()).describe("Tips for making the game more engaging"),
 });
 
-export type Game = z.infer<typeof gameSchema>;
+export type GeneratedGame = z.infer<typeof gameSchema>;
 
 export interface GameRequest {
-  activityType: string;
-  ageGroup: string;
-  energyLevel: string;
-  numberOfKids: string;
-  numberOfAdults: string;
+  activityType: "reading" | "writing" | "maths";
+  ageGroup: "3-5" | "6-8" | "9-12";
+  energyLevel: "low" | "medium" | "high";
+  numberOfKids: "1" | "2" | "3" | "4+";
+  numberOfAdults: "1" | "2" | "3+";
 }
 
 export async function generateGameWithAI(
   gameRequest: GameRequest,
-): Promise<Game> {
+): Promise<NewGame> {
   const promptTemplate = PromptTemplate.fromTemplate(PROMPT_TEMPLATE);
 
   const llm = new ChatOpenAI({
@@ -75,5 +76,16 @@ export async function generateGameWithAI(
     numberOfAdults: gameRequest.numberOfAdults,
   });
 
-  return result;
+  return {
+    title: result.title,
+    description: result.description,
+    instructions: result.instructions,
+    tips: result.tips,
+
+    activityType: gameRequest.activityType,
+    ageGroup: gameRequest.ageGroup,
+    energyLevel: gameRequest.energyLevel,
+    numberOfKids: gameRequest.numberOfKids,
+    numberOfAdults: gameRequest.numberOfAdults,
+  };
 }
