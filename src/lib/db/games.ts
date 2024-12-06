@@ -76,3 +76,27 @@ export async function getGames(): Promise<Game[]> {
 
   return games;
 }
+
+export async function getRecentGames(activityType: Game["activityType"]) {
+  const supabase = await createSupabaseServerClient();
+
+  const { data, error } = await supabase
+    .schema("playful_learning")
+    .from("games")
+    .select()
+    .order("created_at", { ascending: false })
+    .eq("activity_type", activityType)
+    .limit(5);
+
+  if (error) {
+    logger.error({ error }, "Database error while trying to get games");
+    throw error;
+  }
+
+  const games = data.map((game) => ({
+    id: game.id,
+    ...(JSON.parse(game.game_json?.toString() ?? "{}") as NewGame),
+  }));
+
+  return games;
+}

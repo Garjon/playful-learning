@@ -1,4 +1,4 @@
-import type { NewGame } from "@/lib/game/types";
+import type { Game, NewGame } from "@/lib/game/types";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { ChatOpenAI } from "@langchain/openai";
@@ -8,6 +8,9 @@ const OPEN_AI_MODEL = "gpt-4o-mini";
 
 const PROMPT_TEMPLATE = `
 I want to create a fun, age-appropriate learning game for kids that helps with {activityType}. 
+
+Please avoid repeating any of the following games:
+{recentGames}
 
 Details about the child:
 - Age group: {ageGroup}.
@@ -51,6 +54,7 @@ export interface GameRequest {
 
 export async function generateGameWithAI(
   gameRequest: GameRequest,
+  recentGames: Game[],
 ): Promise<NewGame> {
   const promptTemplate = PromptTemplate.fromTemplate(PROMPT_TEMPLATE);
 
@@ -68,12 +72,20 @@ export async function generateGameWithAI(
     structuredLlm,
   ]);
 
+  const recentGamesString = JSON.stringify(
+    recentGames.map((game) => ({
+      title: game.title,
+      description: game.description,
+    })),
+  );
+
   const result = await runnableRagChain.invoke({
     activityType: gameRequest.activityType,
     ageGroup: gameRequest.ageGroup,
     energyLevel: gameRequest.energyLevel,
     numberOfKids: gameRequest.numberOfKids,
     numberOfAdults: gameRequest.numberOfAdults,
+    recentGames: recentGamesString,
   });
 
   return {

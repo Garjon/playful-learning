@@ -1,7 +1,7 @@
 "use server";
 
-import { generateGameWithAI } from "@/lib/ai/generate-game";
-import { insertGame } from "@/lib/db/games";
+import { type GameRequest, generateGameWithAI } from "@/lib/ai/generate-game";
+import { getRecentGames, insertGame } from "@/lib/db/games";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -67,13 +67,17 @@ export async function createGame(
     number_of_adults,
   } = validatedFields.data;
 
-  const game = await generateGameWithAI({
+  const gameRequest: GameRequest = {
     activityType: activity_type,
     ageGroup: age_group,
     energyLevel: energy_level,
     numberOfKids: number_of_kids,
     numberOfAdults: number_of_adults,
-  });
+  };
+
+  const recentGames = await getRecentGames(activity_type);
+
+  const game = await generateGameWithAI(gameRequest, recentGames);
 
   const savedGameId = await insertGame(game);
 
