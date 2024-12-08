@@ -10,8 +10,8 @@
     "format": "biome format --write .",
     "supabase:start": "supabase start",
     "supabase:stop": "supabase stop",
-    "supabase:db:migrate": "supabase db migrate",
-    "supabase:db:reset": "supabase db reset",
+    "supabase:db:migrate": "supabase db push --local",
+    "supabase:db:reset": "supabase db reset --local",
     "supabase:db:types": "supabase gen types typescript --local --schema playful_learning > ./src/lib/db/database-generated.types.ts"
   },
   "dependencies": {
